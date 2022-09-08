@@ -22,12 +22,13 @@ const playElem = document.querySelector('.play');
 const playPrevElem = document.querySelector('.play-prev');
 const playNextElem = document.querySelector('.play-next');
 const audio = new Audio();
-
-const volumeBarElem = document.querySelector('.volume-bar');
+///////////////////////////////////////////////////////////////////////////////
+const volumeListenerElem = document.querySelector('.volume-listener');
 const volumeControllerElem = document.querySelector('.volume-controller');
 const volumeSvg = document.querySelector('.volume');
 const trackNameElem = document.querySelector('.track-name');
-const trackBarElem = document.querySelector('.track-bar');
+//////////////////////////////////////////////////////////////////////////////
+const trackListenerElem = document.querySelector('.track-listener');
 const trackControllerElem = document.querySelector('.track-controller');
 const currentTimeElem = document.querySelector('.current-time');
 const durationTimeElem = document.querySelector('.duration-time');
@@ -245,9 +246,9 @@ function playPrev () {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //volume bar handler
 let volumeDrag = false;
-volumeBarElem.addEventListener('mousedown',function(event){
+volumeListenerElem.addEventListener('mousedown',function(event){
 	volumeDrag = true;
-	updateVolume(event.clientX - volumeBarElem.offsetLeft);
+	updateVolume(event.clientX - volumeListenerElem.offsetLeft);
 		//срабатывает по всей области экрана
 	if (volumeSvg.classList.length == 2) {
 		pastVolume = volumeControllerElem.offsetWidth;
@@ -256,20 +257,20 @@ volumeBarElem.addEventListener('mousedown',function(event){
 });
 document.addEventListener('mousemove',function(event){
 	if(volumeDrag){
-		updateVolume(event.clientX - volumeBarElem.offsetLeft);
-		// if (event.clientX - volumeBarElem.offsetLeft <= 0) {
+		updateVolume(event.clientX - volumeListenerElem.offsetLeft);
+		// if (event.clientX - volumeListenerElem.offsetLeft <= 0) {
 		// 	toggleMuted();
 		// }
 	}
 });
 document.addEventListener('mouseup',function(){
-	if (volumeDrag & event.clientX - volumeBarElem.offsetLeft <= 0) {
+	if (volumeDrag & event.clientX - volumeListenerElem.offsetLeft <= 0) {
 		toggleMuted();
 	}
 	volumeDrag = false;
 });
 function updateVolume (position) {
-	let percentage = 100 * position / volumeBarElem.clientWidth;
+	let percentage = 100 * position / volumeListenerElem.clientWidth;
 
 	if (percentage > 100) {
 		percentage = 100;
@@ -283,14 +284,14 @@ function updateVolume (position) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //track bar handler
 let trackDrag = false;
-trackBarElem.addEventListener('mousedown',function(event){
+trackListenerElem.addEventListener('mousedown',function(event){
 	trackDrag = true;
-	updateTrack(event.clientX - trackBarElem.offsetLeft);
+	updateTrack(event.clientX - trackListenerElem.offsetLeft);
 	audio.pause();
 });
 document.addEventListener('mousemove',function(event){
 	if(trackDrag){
-		updateTrack(event.clientX - trackBarElem.offsetLeft);
+		updateTrack(event.clientX - trackListenerElem.offsetLeft);
 	}
 });
 document.addEventListener('mouseup',function(){
@@ -300,7 +301,7 @@ document.addEventListener('mouseup',function(){
 	trackDrag = false;
 });
 function updateTrack (position) {
-	let percentage = 100 * position / trackBarElem.clientWidth;
+	let percentage = 100 * position / trackListenerElem.clientWidth;
 	
 	if (percentage > 100) {
 		percentage = 100;
@@ -308,7 +309,6 @@ function updateTrack (position) {
 	if (percentage < 0) {
 		percentage = 0;
 	}
-
 	trackControllerElem.style.width = percentage +'%';
 	audio.currentTime = (percentage / 100)*audio.duration;
 };

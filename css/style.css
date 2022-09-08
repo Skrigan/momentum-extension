@@ -291,12 +291,19 @@ svg.mute .circle_lg {
 svg.mute .circle_sm {
   opacity: 0;
 }
+.volume-listener {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 .volume-bar {
   width: 100%;
   border-radius: 2px;
   height: 4px;
   background: rgba(255, 255, 255, 0.23);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .volume-controller {
   background: rgba(255, 255, 255);
@@ -304,7 +311,6 @@ svg.mute .circle_sm {
   height: 100%;
   border-radius: 2px;
 }
-
 .player-volume-container {
   display: flex;
   flex-direction: row;
@@ -322,12 +328,19 @@ svg.mute .circle_sm {
   align-items: center;
   gap: 8px;
 }
+.track-listener {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 .track-bar {
   width: 100%;
   border-radius: 3px;
   height: 6px;
   background: rgba(255, 255, 255, 0.23);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .track-controller {
   background: rgba(255, 255, 255);
@@ -341,6 +354,8 @@ svg.mute .circle_sm {
   width: 180px;
   gap: 7px;
 }
+
+
 
 @media (max-width: 768px) {
   .time {
