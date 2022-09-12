@@ -1,7 +1,11 @@
 @font-face {
   font-family: 'Arial-MT';
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
- }
+}
+
+:root {
+  --todo-color: #555;
+}
 
 * {
   box-sizing: border-box;
@@ -245,20 +249,123 @@ body {
 
 .footer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
   height: 30vh;
-  min-height: 160px;  
+  min-height: 160px;
   padding: 20px;
 }
+.todo-btn {
+  padding: 6px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.todo-btn:hover {
+  opacity: 1;
+}
+.todo-container {
+  /* height: 300px; */
+  width: 320px;
+  background-color: rgba(255, 255, 255, 1);
+  position: absolute;
+  bottom: 65px;
+  right: 10px;
+  border-radius: 5px;
+  padding: 5px 0px;
+  color: var(--todo-color);
+  cursor: default;
+}
+.pointer {
+  width: 24px;
+  height: 20px;
+  position: absolute;
+  bottom: -20px;
+  right: 22px;
+  background: linear-gradient(-45deg, transparent 15px, rgb(255, 255, 255) 0) bottom right, linear-gradient(45deg, transparent 15px, rgb(255, 255, 255) 0) bottom left;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+.todo-input {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--todo-color);
+  border-top: 1px solid black;
+  background: none;
+}
+.todo-input::placeholder {
+  color: var(--todo-color);
+}
+.todo-compleated {
+  color: green;
+  font-weight: 700;
+}
+.empty-todo {
+  padding: 30px;
+  font-size: 18px;
+}
+.todo-counter {
+  padding: 10px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-evenly;
+}
+.todo-failed {
+  color: red;
+  font-weight: 700;
+}
+.todo-tasks {
+  padding-bottom: 5px;
+}
+.todo-li {
+  display: flex;
+  padding-top: 5px;
+}
+.todo-label {
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.todo-input {
+  
+}
+.todo-text {
+  text-align: left;
+  min-width: 0;
+  word-wrap: break-word;
+  width: 100%;
+}
+.todo-completed {
+  text-decoration: line-through;
+  color: #999999;
+}
+.todo-more-options {
+  padding-left: 10px;
+  padding-right: 20px;
+}
 
+.settings-icon {
+  box-sizing: unset;
+  padding: 6px;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.settings-icon:hover {
+  opacity: 1;
+}
 .change-quote {
   margin-bottom: 30px;
   background-image: url("../assets/svg/reload.svg");  
 }
-
+.quote-container {
+  align-self: center;
+}
 .quote {
   min-height: 32px;
 }
