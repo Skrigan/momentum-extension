@@ -32,10 +32,6 @@ const trackListenerElem = document.querySelector('.track-listener');
 const trackControllerElem = document.querySelector('.track-controller');
 const currentTimeElem = document.querySelector('.current-time');
 const durationTimeElem = document.querySelector('.duration-time');
-//////////////////////////////////////////////////////////////////////////////
-const todoInput = document.querySelector('.todo-input');
-const todoTasks = document.querySelector('.todo-tasks');
-const emptyTodo = document.querySelector('.empty-todo');
 
 function showTimeAndDate() {
 	const date = new Date();
@@ -374,39 +370,6 @@ function activePlayItem (playItem) {
 	 }
 	 activeItem = playItem;
 	 activeItem.classList.add('item-active');
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-todoInput.addEventListener('keydown', function(e) {
-	if (e.keyCode === 13) {
-		getToDo();
-	}
-});
-
-function getToDo() {
-//СДЕЛАТЬ ЕБАНЫЙ ПУНКТИК ПОЕДАНИЯ ГОВНА БЛЯТЬ ДЛЯ ГОВНОЕДОВ СУКААААААААААА
-	let li = document.createElement('li');
-	li.classList.add('todo-li')
-	// li.textContent = todoInput.value;
-	li.innerHTML = `
-	<label class="todo-label">
-		<input type="checkbox" class="todo-input">
- 	</label>
- 	<div class="todo-text">${todoInput.value}</div>
-	<dic class="todo-more-options">***</div>`
-	todoTasks.append(li);
-	emptyTodo.style.display = "none";
-	// console.log(todoInput.value);
-	todoInput.value = '';
-}
-
-todoTasks.addEventListener('click', function(e) {
-	if (Array.from(e.target.classList).includes('todo-label')) {
-		toggleTodoComplete(e.target);
-	}
-})
-
-function toggleTodoComplete(e) {
-	e.nextElementSibling.classList.toggle('todo-completed');
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
